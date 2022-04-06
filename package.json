@@ -1,22 +1,16 @@
 {
-  "name": "sings-utils",
-  "version": "1.0.6",
+  "name": "{{ name }}",
+  "version": "1.0.0",
+  "description": "{{ description }}",
   "main": "dist/umd/index.js",
   "typings": "types/index.d.ts",
-  "module": "dist/umd/index.esm.js",
+  "author": "{{ author }}",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/huahuahuahuahuahua/sings-utils.git"
+    "url": ""
   },
-  "author": "张坚泉",
   "license": "MIT",
-  "_location": "/sings-utils",
   "_need_handle_files": [
-    "debounce",
-    "changefilesize",
-    "formatnumber",
-    "throttle",
-    "UrlGetRequest",
     "index"
   ],
   "files": [
@@ -88,14 +82,12 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "description": "工具库",
   "dependencies": {
     "rollup-plugin-typescript2": "^0.31.2",
     "typescript": "^4.6.3"
   },
   "keywords": [
-    "mudoles",
-    "utils"
+    ""
   ],
   "husky": {
     "hooks": {
