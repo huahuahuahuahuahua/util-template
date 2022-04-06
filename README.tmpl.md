@@ -1,40 +1,33 @@
-<!--
- * @Author: t_winkjqzhang
- * @Date: 2022-04-02 11:58:36
- * @LastEditTime: 2022-04-06 21:14:56
- * @Description: Do not edit
--->
-
-# sings-utils
+# util-template
 
 使用公共库
 
+模板提供给的命令行地址：
+
+[winkcli-main](https://github.com/huahuahuahuahuahua/winkcli-main/tree/master/)
+
+## 目录结构
+
+```shell
+
+├───.husky
+│   └───_
+├───src   工具开发
+├───README.md 文档
+├───README.tmpl.md 公共文档（可生成README.md）
+└───test  测试
+```
+
 ## 示例代码
 
-## installion
-
-Using npm:
+如需直接使用
 
 ```shell
-$ npm i -g sings-utils
-$ npm i -save sings-utils
-```
-
-In Node.js:
-
-```shell
-// Load the full build.
-var _ = require('sings-utils');
-```
-
-Note:
-Install use in the Node.js < 6 REPL.
-
-## command
-
-```shell
-import {formatnumber} from 'sings-utils';
-console.log(formatnumber("1111"))
+npm run build --文件打包
+npm run dev  --监听ts文件
+npm run doc --生成文档
+npm run lint--测试
+npm run release--npm发布
 ```
 
 ## Support
@@ -43,4 +36,8 @@ Tested in Chrome 74-75, Firefox 66-67, IE 11, Edge 18, Safari 11-12, & Node.js 8
 
 ## test
 
-`use jest`
+jest
+
+## LICENSE
+
+MIT
