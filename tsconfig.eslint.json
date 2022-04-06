@@ -1,0 +1,13 @@
+/* tsconfig.eslint.json */
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "resolveJsonModule": true,
+        "forceConsistentCasingInFileNames":true,
+        "strict": true
+    },
+    "include": [
+        "**/*.ts",
+        "**/*.js"
+    ],
+}

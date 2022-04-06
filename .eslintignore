@@ -1,0 +1,10 @@
+dist/
+lib/
+node_modules/
+public/
+config/
+.eslintrc.js
+tsconfig.eslint.json
+tsconfig.json
+src/throttle.ts
+src/debounce.ts

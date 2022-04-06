@@ -1,0 +1,1130 @@
+{
+	"id": 0,
+	"name": "sings-utils",
+	"kind": 0,
+	"flags": {},
+	"originalName": "",
+	"children": [
+		{
+			"id": 51,
+			"name": "UrlGetRequest",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 58,
+					"name": "default",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 52
+				},
+				{
+					"id": 55,
+					"name": "IUrlGetRequest",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {},
+					"comment": {
+						"tags": [
+							{
+								"tag": "param",
+								"text": "//完整的url",
+								"param": "url"
+							},
+							{
+								"tag": "param",
+								"text": "//param参数，键",
+								"param": "variable"
+							},
+							{
+								"tag": "returns",
+								"text": "//param参数，variable对应的值"
+							},
+							{
+								"tag": "date:",
+								"text": "2022-04-02 15:03:38"
+							},
+							{
+								"tag": "description:url分离出参数",
+								"text": "\n"
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 56,
+							"name": "url",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "UrlGetRequest.ts",
+									"line": 17,
+									"character": 4
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 57,
+							"name": "variable",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "UrlGetRequest.ts",
+									"line": 18,
+									"character": 4
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								56,
+								57
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "UrlGetRequest.ts",
+							"line": 16,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 52,
+					"name": "UrlGetRequest",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "UrlGetRequest.ts",
+							"line": 20,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 53,
+							"name": "UrlGetRequest",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 54,
+									"name": "__namedParameters",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"id": 55,
+										"name": "IUrlGetRequest"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "References",
+					"kind": 16777216,
+					"children": [
+						58
+					]
+				},
+				{
+					"title": "Interfaces",
+					"kind": 256,
+					"children": [
+						55
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						52
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "UrlGetRequest.ts",
+					"line": 16,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 1,
+			"name": "changefilesize",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 5,
+					"name": "default",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 2
+				},
+				{
+					"id": 2,
+					"name": "changefilesize",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "changefilesize.ts",
+							"line": 14,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 3,
+							"name": "changefilesize",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"returns": "size  转换后的文件大小",
+								"tags": [
+									{
+										"tag": "date:",
+										"text": "2022-04-02 15:23:27"
+									},
+									{
+										"tag": "description:文件转换二进制值为kb,mb...",
+										"text": "\n\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 4,
+									"name": "limit",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "二进制文件大小"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "References",
+					"kind": 16777216,
+					"children": [
+						5
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						2
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "changefilesize.ts",
+					"line": 14,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 6,
+			"name": "debounce",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 12,
+					"name": "TAnyFunction",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "debounce.ts",
+							"line": 43,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 13,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {},
+							"comment": {
+								"shortText": "函数去抖，也就是说当调用动作n毫秒后，才会执行该动作，若在这n毫秒内又调用此动作则将重新计算执行时间。",
+								"returns": "返回去抖之后的函数.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n\n// Avoid costly calculations while the window size is in flux.\njQuery(window).on('resize', _.debounce(calculateLayout, 150));\n\n// Invoke `sendMail` when clicked, debouncing subsequent calls.\njQuery(element).on('click', _.debounce(sendMail, 300, {\n  'leading': true,\n  'trailing': false\n}));\n\n// Ensure `batchLog` is invoked once after 1 second of debounced calls.\nvar debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });\nvar source = new EventSource('/stream');\njQuery(source).on('message', debounced);\n\n// Cancel the trailing debounced invocation.\njQuery(window).on('popstate', debounced.cancel);\n"
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "debounce.ts",
+									"line": 43,
+									"character": 27
+								}
+							],
+							"signatures": [
+								{
+									"id": 14,
+									"name": "__type",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "函数去抖，也就是说当调用动作n毫秒后，才会执行该动作，若在这n毫秒内又调用此动作则将重新计算执行时间。",
+										"returns": "返回去抖之后的函数."
+									},
+									"parameters": [
+										{
+											"id": 15,
+											"name": "args",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "any"
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 16,
+					"name": "default",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 17,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {},
+							"children": [
+								{
+									"id": 18,
+									"name": "debounce",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 19,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"signatures": [
+												{
+													"id": 20,
+													"name": "__type",
+													"kind": 4096,
+													"kindString": "Call signature",
+													"flags": {},
+													"parameters": [
+														{
+															"id": 21,
+															"name": "func",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"type": {
+																"type": "reference",
+																"id": 12,
+																"name": "TAnyFunction"
+															}
+														},
+														{
+															"id": 22,
+															"name": "wait",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"type": {
+																"type": "intrinsic",
+																"name": "number"
+															},
+															"defaultValue": "1000"
+														},
+														{
+															"id": 23,
+															"name": "options",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"type": {
+																"type": "reference",
+																"name": "IOptions"
+															},
+															"defaultValue": "{}"
+														}
+													],
+													"type": {
+														"type": "reference",
+														"id": 12,
+														"name": "TAnyFunction"
+													}
+												}
+											]
+										}
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Properties",
+									"kind": 1024,
+									"children": [
+										18
+									]
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 7,
+					"name": "debounce",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "debounce.ts",
+							"line": 45,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 8,
+							"name": "debounce",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 9,
+									"name": "func",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"id": 12,
+										"name": "TAnyFunction"
+									}
+								},
+								{
+									"id": 10,
+									"name": "wait",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "1000"
+								},
+								{
+									"id": 11,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "IOptions"
+									},
+									"defaultValue": "{}"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 12,
+								"name": "TAnyFunction"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						12
+					]
+				},
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						16
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						7
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "debounce.ts",
+					"line": 3,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 24,
+			"name": "formatnumber",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 28,
+					"name": "default",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 29,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {},
+							"children": [
+								{
+									"id": 30,
+									"name": "formatNumber",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 31,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"signatures": [
+												{
+													"id": 32,
+													"name": "__type",
+													"kind": 4096,
+													"kindString": "Call signature",
+													"flags": {},
+													"comment": {
+														"returns": "number:转换后的值，value：倍数",
+														"tags": [
+															{
+																"tag": "name:",
+																"text": ""
+															},
+															{
+																"tag": "msg:",
+																"text": ""
+															},
+															{
+																"tag": "descripttion:",
+																"text": "转换number为指定数值\n"
+															}
+														]
+													},
+													"parameters": [
+														{
+															"id": 33,
+															"name": "num",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"comment": {},
+															"type": {
+																"type": "intrinsic",
+																"name": "number"
+															}
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "object"
+													}
+												}
+											]
+										}
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Properties",
+									"kind": 1024,
+									"children": [
+										30
+									]
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 25,
+					"name": "formatNumber",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "formatnumber.ts",
+							"line": 14,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 26,
+							"name": "formatNumber",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"returns": "number:转换后的值，value：倍数",
+								"tags": [
+									{
+										"tag": "name:",
+										"text": ""
+									},
+									{
+										"tag": "msg:",
+										"text": ""
+									},
+									{
+										"tag": "descripttion:",
+										"text": "转换number为指定数值\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 27,
+									"name": "num",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "object"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						28
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						25
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "formatnumber.ts",
+					"line": 14,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 34,
+			"name": "index",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 61,
+					"name": "IUrlGetRequest",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 55
+				},
+				{
+					"id": 63,
+					"name": "TAnyFunction",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 12
+				},
+				{
+					"id": 60,
+					"name": "UrlGetRequest",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 52
+				},
+				{
+					"id": 64,
+					"name": "changefilesize",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 2
+				},
+				{
+					"id": 62,
+					"name": "debounce",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 7
+				},
+				{
+					"id": 65,
+					"name": "formatNumber",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 25
+				},
+				{
+					"id": 66,
+					"name": "isObject",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 36
+				},
+				{
+					"id": 59,
+					"name": "throttle",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 45
+				}
+			],
+			"groups": [
+				{
+					"title": "References",
+					"kind": 16777216,
+					"children": [
+						61,
+						63,
+						60,
+						64,
+						62,
+						65,
+						66,
+						59
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 15,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 35,
+			"name": "isObject",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 39,
+					"name": "default",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 36
+				},
+				{
+					"id": 36,
+					"name": "isObject",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "isObject.ts",
+							"line": 15,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 37,
+							"name": "isObject",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"tags": [
+									{
+										"tag": "name:",
+										"text": ""
+									},
+									{
+										"tag": "msg:",
+										"text": ""
+									},
+									{
+										"tag": "descripttion:",
+										"text": "判断是否为对象\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 38,
+									"name": "obj",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "对象"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "object"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "References",
+					"kind": 16777216,
+					"children": [
+						39
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						36
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "isObject.ts",
+					"line": 15,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 40,
+			"name": "main",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 43,
+					"name": "default",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 41
+				},
+				{
+					"id": 41,
+					"name": "main",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "main.ts",
+							"line": 11,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 42,
+							"name": "main",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "References",
+					"kind": 16777216,
+					"children": [
+						43
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						41
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "main.ts",
+					"line": 7,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 44,
+			"name": "throttle",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 50,
+					"name": "default",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {},
+					"target": 45
+				},
+				{
+					"id": 45,
+					"name": "throttle",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "throttle.ts",
+							"line": 18,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 46,
+							"name": "throttle",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"tags": [
+									{
+										"tag": "date:",
+										"text": "2022-04-02 10:57:20\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 47,
+									"name": "func",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "reference",
+										"name": "Function"
+									}
+								},
+								{
+									"id": 48,
+									"name": "wait",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 49,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "reference",
+										"name": "IOptions"
+									},
+									"defaultValue": "{}"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Function"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "References",
+					"kind": 16777216,
+					"children": [
+						50
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						45
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "throttle.ts",
+					"line": 7,
+					"character": 0
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "Modules",
+			"kind": 1,
+			"children": [
+				51,
+				1,
+				6,
+				24,
+				34,
+				35,
+				40,
+				44
+			]
+		}
+	]
+}
