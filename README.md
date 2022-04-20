@@ -6,6 +6,8 @@
 
 [winkcli-main](https://github.com/huahuahuahuahuahua/winkcli-main/tree/master/)
 
+
+
 实现的需求：🤔
 
 - 支持编辑器的快速补全和提示
@@ -13,30 +15,37 @@
 - 支持自动生成 changlog
 - 代码通过 lint 和测试后才能提交、发布
 
+
+
+
+
 ## 涉及的库
 
-- eslint + @typescript-eslint/parser 检测 ts
-- typescript ts 库
-- @rollup ts 打包工具
+- eslint + @typescript-eslint/parser 检测ts
+- typescript ts库
+- @rollup ts打包工具
 - jest 测试工具
 - @microsoft/api-extractor .d.ts 打包
 - gulp 打包
 - husky+lint-staged 预编译
 - typedoc 生成文档
 
+
+
 ## 目录结构
 
 ```shell
-
 ├───.husky
 │   └───_
 ├───src   工具开发
 ├───README.md 文档
 ├───README.tmpl.md 公共文档（可生成README.md）
-├───test  测试
+├───test  测试 
 └───...配置文件
 
 ```
+
+
 
 ## 示例代码
 
@@ -50,7 +59,11 @@ npm run lint--测试
 npm run release--npm发布
 ```
 
+
+
 ## 整体实现
+
+
 
 ### 初始化项目
 
@@ -60,11 +73,15 @@ cd util-template
 npm init 初始化
 ```
 
+
+
 ### 安装 [TypeScript](https://link.juejin.cn/?target=https%3A%2F%2Fwww.tslang.cn%2Fdocs%2Fhome.html)
 
 ```
 npm i -D typescript
 ```
+
+
 
 创建 `src` 目录，入口文件，以及 ts 的配置文件
 
@@ -78,7 +95,9 @@ util-template
  |- tsconfig.json
 ```
 
-### tsconfig.json 文件配置
+
+
+### tsconfig.json文件配置
 
 ```shell
 {
@@ -166,6 +185,8 @@ util-template
 }
 ```
 
+
+
 ### 配置 tsconfig.eslint.json
 
 ```shell
@@ -183,6 +204,8 @@ util-template
     ],
 }
 ```
+
+
 
 ### 配置 .eslintrc.js
 
@@ -233,7 +256,9 @@ const eslintrc = {
 module.exports = eslintrc;
 ```
 
-### 配置 rollup(安装请看 package.json)
+
+
+### 配置 rollup(安装请看package.json)
 
 ### 配置 .babelrc
 
@@ -252,7 +277,7 @@ module.exports = eslintrc;
 }
 ```
 
-### 配置 rollup.config.js
+### 配置rollup.config.js
 
 ```shell
 /*
@@ -357,6 +382,8 @@ let g_d_tasks_list = [].concat(
 export default g_d_tasks_list;
 ```
 
+
+
 ### 配置 jest
 
 工具库需要写测试
@@ -366,6 +393,8 @@ export default g_d_tasks_list;
 ```
 yarn add -D @types/jest eslint-plugin-jest jest ts-jest
 ```
+
+
 
 ### 配置 jest.config.js
 
@@ -390,6 +419,8 @@ export function main() {
 export default main;
 ```
 
+
+
 ### main.test.ts
 
 ```shell
@@ -413,17 +444,23 @@ describe("Name of the group", () => {
 - coverage 输出测试覆盖率
 - verbose 层次显示测试套件中每个测试的结果，会看着更加直观啦
 
+
+
+
+
 ### 配置 gulpfile
 
-构建流程 🤔
+构建流程🤔 
 
-1. eslint 检测代码--taskeslint
-2. 删除 dist 文件，Rollup 重新打包 --taskBuildTsProject
-3. 读取 commit，写到日志--taskchangelog
-4. 构建文档 --exports.buildTypes
+1. eslint检测代码--taskeslint
+2. 删除 dist文件，Rollup 重新打包 --taskBuildTsProject
+3. 读取commit，写到日志--taskchangelog
+4. 构建文档 --exports.buildTypes 
 5. api-extractor 生成统一的声明文件，然后 删除多余的声明文件
-6. 生成 umd 和 esm 的模块代码 --taskBuildUmdEsm
+6. 生成umd和esm的模块代码 --taskBuildUmdEsm
 7. 完成
+
+
 
 ```shell
 //eslint检测代码--jest测试
@@ -501,6 +538,10 @@ exports.buildTypes = gulp.series(
 
 ```
 
+
+
+
+
 ### 优化开发流程
 
 ### 安装
@@ -523,26 +564,34 @@ yarn add -D husky lint-staged
       "git add"
     ]
   }
-复制代码
+
 ```
 
 之后提交代码都会先 lint 验证，再 jest 测试通过，才可以提交。规范团队协作的代码规范
 
+
+
 ### 仓库地址
 
-[huahuahuahuahuahua/util-template: 提供给 winkcli-main 的模板库 (github.com)](https://github.com/huahuahuahuahuahua/util-template)
+[huahuahuahuahuahua/util-template: 提供给winkcli-main的模板库 (github.com)](https://github.com/huahuahuahuahuahua/util-template)
 
 ## 参考
 
-#### [TypeScript、Rollup 搭建工具库 - 掘金 (juejin.cn)](https://juejin.cn/post/6844904035309322254#heading-36)
+[TypeScript、Rollup 搭建工具库 - 掘金 (juejin.cn)](https://juejin.cn/post/6844904035309322254#heading-36)
 
 [gulp](https://link.juejin.cn/?target=https%3A%2F%2Fwww.gulpjs.com.cn%2Fdocs%2Fgetting-started%2Fquick-start%2F)
 
 [Commit message 和 Change log 编写指南](https://link.juejin.cn/?target=https%3A%2F%2Fwww.ruanyifeng.com%2Fblog%2F2016%2F01%2Fcommit_message_change_log.html)
 
+#### 本文章链接：
+
+[学习用ts+gulp+rollup写一个工具库 - 掘金 (juejin.cn)](https://juejin.cn/post/7083911355509506055/)
+
 ## Support
 
 Tested in Chrome 74-75, Firefox 66-67, IE 11, Edge 18, Safari 11-12, & Node.js 8-12.
+
+
 
 ## LICENSE
 

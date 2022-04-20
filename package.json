@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "{{ description }}",
   "main": "dist/umd/index.js",
+  "module": "dist/esm/index.esm.js",
   "typings": "types/index.d.ts",
   "author": "{{ author }}",
   "repository": {
@@ -75,7 +76,8 @@
     "rollup-plugin-uglify": "^6.0.4",
     "ts-jest": "^27.1.4",
     "tslib": "^2.3.0",
-    "typedoc": "^0.21.5"
+    "typedoc": "^0.22.0",
+    "typedoc-plugin-markdown": "^3.10.4"
   },
   "publishConfig": {
     "access": "public",

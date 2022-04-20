@@ -5,12 +5,8 @@ const { exec } = require("child_process");
 const clean = require("gulp-clean");
 const typedoc = require("gulp-typedoc");
 const pkg = require("./package.json");
-const {
-  Extractor,
-  ExtractorConfig,
-  ExtractorResult,
-} = require("@microsoft/api-extractor");
 const conventionalChangelog = require("conventional-changelog");
+const { resolve } = require("path");
 /** 需要编译的文件名（不带后缀名） */
 let inputFileNameNoExtList = pkg._need_handle_files;
 const paths = {
@@ -18,7 +14,6 @@ const paths = {
   src: path.join(__dirname, "src"),
   dist: path.join(__dirname, "/dist"),
 };
-cb = () => {};
 /**
  * 首字母变大写
  *
@@ -39,58 +34,88 @@ let firstCharUpperCase = (str) => {
 let addEsmMiddle = (str) => {
   return str.split(".").join(".esm.");
 };
+
+function sh(commend, cwd = "./") {
+  return new Promise(function (resolve, reject) {
+    const work = exec(commend, { cwd: cwd }, function (err, stdout, stderr) {
+      // console.log(err, stderr)
+      if (err) {
+        // console.log(err);
+        resolve({
+          code: -1,
+          msg: JSON.stringify(err),
+        });
+      } else {
+        // console.log(`stdout: ${stdout}`);
+        resolve({
+          code: 1,
+          stdout,
+        });
+      }
+    });
+
+    work.stdout.on("data", function (data) {
+      console.log("stdout: " + data);
+    });
+
+    work.stderr.on("data", function (data) {
+      console.log("stderr: " + data);
+    });
+  });
+}
+
 /** 清除 types 文件 */
 const taskCleanTypes = () =>
   gulp.src("types", { allowEmpty: true }).pipe(clean());
 
 /** 使用 tsc 输出 .d.ts */
-const taskOutputTypes = (done) => {
-  exec(
-    `${path.resolve("./node_modules/.bin/tsc")} ${inputFileNameNoExtList
-      .filter((name) => !/\./.test(name))
-      .map((name) => `./src/${name}.ts`)
-      .join(" ")} --declaration --declarationDir ./types --outDir ./types`
-  );
-  done();
-  // const cmdStr = `${path.resolve(
-  //   "./node_modules/.bin/tsc"
-  // )} ${inputFileNameNoExtList
-  //   .filter((name) => !/\./.test(name))
-  //   .map((name) => `./src/${name}.ts`)
-  //   .join(" ")} --declaration --declarationDir ./types --outDir ./types`;
-  // return new Promise((resolve, reject) => {
-  //   exec(cmdStr, (err, stdout, stderr) => {
-  //     if (err) {
-  //       console.log(err);
-  //       console.warn(new Date(), " 打包ts命令执行失败");
-  //       reject(err);
-  //     } else {
-  //       console.log(stdout);
-  //       console.warn(new Date(), " 打包ts命令执行成功");
-  //       resolve();
-  //     }
-  //   });
-  // });
+const taskOutputTypes = () => {
+  const cmdStr = `${path.resolve(
+    "./node_modules/.bin/tsc"
+  )} ${inputFileNameNoExtList
+    .filter((name) => !/\./.test(name))
+    .map((name) => `./src/${name}.ts`)
+    .join(" ")} --declaration --declarationDir ./types --outDir ./types `;
+  return new Promise((resolve, reject) => {
+    exec(cmdStr, (err, stdout, stderr) => {
+      if (err) {
+        console.log(err);
+        console.warn(new Date(), " 打包ts命令执行失败");
+        reject(err);
+      } else {
+        console.log(stdout);
+        console.warn(new Date(), " 打包ts命令执行成功");
+        resolve();
+      }
+    });
+  }).then(() => {
+    // exec(
+    //   `del ${path.resolve(paths.root, "types/*.js")}`,
+    //   (err, stdout, stderr) => {
+    //     if (err) {
+    //       console.log(err);
+    //       console.warn(new Date(), " 清除js命令执行失败");
+    //     } else {
+    //       console.log(stdout);
+    //       console.warn(new Date(), " 清除js命令执行成功");
+    //     }
+    //   }
+    // );
+  });
 };
 
 /** 清除 types 文件 */
-const taskCleanTypesDirUnuseFile = () =>
+const taskCleanTypesDirUnuseFile = (done) => {
   gulp.src("types/*.js", { allowEmpty: true }).pipe(clean());
-
-/** 使用 rollup 构建 ts 项目 删除 dist文件，Rollup 重新打包*/
-const taskBuildTsProject = (done) => {
-  const cmdStr = `${path.resolve("./node_modules/.bin/rollup")} -c`;
-  exec(cmdStr, (err, stdout, stderr) => {
-    if (err) {
-      console.log(err);
-      console.warn(new Date(), " 打包执行失败");
-    } else {
-      console.log(stdout);
-      console.warn(new Date(), " 打包执行成功");
-    }
-  });
   done();
 };
+// const taskCleanDistJs = () => {
+//   gulp.src("dist/*.js", { allowEmpty: true }).pipe(clean());
+//   gulp.src("dist/*.esm.js", { allowEmpty: true }).pipe(clean());
+// };
+/** 使用 rollup 构建 ts 项目 */
+// const taskBuildTsProject = () =>
+//   exec(`${path.resolve("./node_modules/.bin/rollup")} -c`);
 
 /** 使用 parcel 构建 umd 项目 */
 const taskBuildUmdEsm = () =>
@@ -113,7 +138,6 @@ const taskBuildUmdEsm = () =>
       );
     })
   );
-
 /** 输出 README.md */
 const taskOutputReadme = () => {
   return new Promise((resolve) => {
@@ -309,11 +333,11 @@ const taskOutputTypedoc = () => {
       // NOTE: the out option and the json option cannot share the same directory
       out: "./docs/",
       json: "./typedoc.file.json",
-      exclude: ["node_modules", "**/*+(index|.worker|.e2e).ts"],
+      // exclude: ["node_modules", "**/*+(index|.worker|.e2e).ts"],
       // TypeScript options (see typescript docs)
       // Output options (see typedoc docs)
       // TypeDoc options (see typedoc docs)
-      version: true,
+      // version: true,
 
       // // TypeDoc options (see TypeDoc docs http://typedoc.org/api/interfaces/typedocoptionmap.html)
       // name: 'my-project',
@@ -323,57 +347,6 @@ const taskOutputTypedoc = () => {
     })
   );
 };
-// api-extractor 整理 .d.ts 文件
-const apiExtractorGenerate = async (cb) => {
-  const apiExtractorJsonPath = path.join(__dirname, "./api-extractor.json");
-  // 判断是否存在 index.d.ts 文件，这里必须先等会儿，rollup 的 bundle write 是结束了，
-  // 但是 ts 的 typings 编译还没结束
-  const isExist = await new Promise((resolve) => {
-    let intervalTimes = 5;
-    let exitFlag = false;
-    const timer = setInterval(async () => {
-      exitFlag = await fs.existsSync("./types/index.d.ts");
-      intervalTimes--;
-      if (exitFlag || intervalTimes === 0) {
-        clearInterval(timer);
-        resolve(exitFlag);
-      }
-    }, 100);
-  });
-
-  if (!isExist) {
-    console.error("API Extractor not find index.d.ts");
-    return;
-  }
-  // 加载并解析 api-extractor.json 文件
-  const extractorConfig =
-    ExtractorConfig.loadFileAndPrepare(apiExtractorJsonPath);
-
-  // 调用 API
-  const extractorResult = Extractor.invoke(extractorConfig, {
-    localBuild: true,
-    // 在输出中显示信息
-    showVerboseMessages: true,
-  });
-
-  if (extractorResult.succeeded) {
-    // 删除多余的 .d.ts 文件
-    const distFiles = await fs.readdir(paths.lib);
-    distFiles.forEach(async (file) => {
-      if (file.endsWith(".d.ts") && !file.includes("index")) {
-        await fs.remove(path.join(paths.lib, file));
-      }
-    });
-    console.log("API Extractor completed successfully");
-    cb();
-  } else {
-    console.error(
-      `API Extractor completed with ${extractorResult.errorCount} errors` +
-        ` and ${extractorResult.warningCount} warnings`
-    );
-  }
-};
-//jest测试
 const taskeslint = () => {
   return new Promise(function (resolve, reject) {
     const cmdStr = `${path.resolve(
@@ -392,7 +365,24 @@ const taskeslint = () => {
     resolve();
   });
 };
-//更新版本号
+const taskJestTest = () => {
+  return new Promise(function (resolve, reject) {
+    const cmdStr = `${path.resolve(
+      "./node_modules/.bin/jest"
+    )} --verbose -u --coverage --colors`;
+    exec(cmdStr, (err, stdout, stderr) => {
+      if (err) {
+        console.log(err);
+        console.warn(new Date(), " eslint编译命令执行失败");
+      } else {
+        console.log(stdout);
+        console.warn(new Date(), " eslint编译命令执行成功");
+      }
+    });
+
+    resolve();
+  });
+};
 const taskUpdateVersion = () => {
   return new Promise(function (resolve, reject) {
     //更新版本
@@ -409,21 +399,44 @@ const taskUpdateVersion = () => {
     resolve();
   });
 };
-//发布
-const taskPublish = () => {
-  return new Promise((resolve, reject) => {
-    //发布版本
-    exec(`npm publish`, (err, stdout, stderr) => {
-      if (err) {
-        reject(err);
-        throw new Error(new Date(), " 发布版本命令执行失败");
-      } else {
-        console.log(stdout);
-        console.warn(new Date(), " 发布版本命令执行成功");
-      }
-    });
+//发布版本
+const taskPublish = async (done) => {
+  // 升级版本号
+  console.log("--------------------开发发布包到npm");
+  const versionFlag = await sh("npm publish");
+  if (versionFlag.code === 1) {
+    console.log("------------------发布版本成功");
     resolve();
-  });
+  } else {
+    console.log(versionFlag.msg);
+    return;
+  }
+  done();
+};
+const taskAddTag = async (done) => {
+  // 自动打 tag
+  // const addTagFlag = await sh(
+  //   `git tag -a ${pkg.version} -m 'version ${pkg.version}'`,
+  //   path.join(__dirname, "..")
+  // );
+  // if (addTagFlag.code === 1) {
+  //   console.log("..........................打 tag 成功");
+  // } else {
+  //   console.log(addTagFlag.msg);
+  //   return;
+  // }
+  const pkg = require("./package.json");
+  const pushTagFlag = await sh(
+    "git push origin " + pkg.version,
+    path.join(__dirname, "..")
+  );
+  if (pushTagFlag.code === 1) {
+    console.log("..........................tag 推送远程成功");
+  } else {
+    console.log(pushTagFlag.msg);
+    return;
+  }
+  done();
 };
 /** type doc 任务 */
 const taskTypedoc = gulp.series(taskCleanTypedoc, taskOutputTypedoc); //taskOutputTypedoc
@@ -437,19 +450,24 @@ exports.buildTypes = gulp.series(
   taskOutputTypes,
   taskCleanTypesDirUnuseFile,
   exports.doc
-  // apiExtractorGenerate
 );
 exports.build = gulp.parallel(
+  taskJestTest,
   taskeslint,
-  taskBuildTsProject,
+  // taskBuildTsProject,
   taskchangelog,
   exports.buildTypes,
   taskBuildUmdEsm
+  // gulp.series(taskBuildUmdEsm, taskCleanDistJs)
 );
-exports.publish = gulp.series(taskUpdateVersion, taskPublish);
-exports.taskUpdateVersion = taskUpdateVersion;
-exports.taskBuildTsProject = taskBuildTsProject;
-exports.apiExtractorGenerate = apiExtractorGenerate;
+exports.taskBuildUmdEsm = taskBuildUmdEsm;
 exports.taskOutputTypes = taskOutputTypes;
+// exports.taskBuildTsProject = taskBuildTsProject;
+exports.publish = gulp.series(taskUpdateVersion, taskPublish, taskAddTag);
+exports.taskUpdateVersion = taskUpdateVersion;
+exports.taskJestTest = taskJestTest;
+exports.taskOutputTypes = taskOutputTypes;
+exports.taskCleanTypesDirUnuseFile = taskCleanTypesDirUnuseFile;
+exports.changelog = taskchangelog;
 exports.dev = taskDev;
 exports.default = (cb) => cb();
